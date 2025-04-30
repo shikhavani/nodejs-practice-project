@@ -1,5 +1,34 @@
 const express = require('express');
+const {adminAuth, userAuth} = require('./middlewares/auth');
 const app = express();
+
+// will check for all apis routing to /admin
+app.use("/admin", adminAuth);
+app.use("/admin/getAllUsers", (req, res, next) => {
+    res.send('All users');
+});
+
+// no need for authentication
+app.use("/user/signup", (req,res) => {
+    console.log('signing up user');
+    res.send('Signup success!');
+});
+
+// authentication required, checks only for this route
+app.use("/user", userAuth, (req, res, next) => {
+    console.log('user validated');
+    res.send('Authentication checked!');
+
+    // to call next middleware with /user/
+    // next();
+});
+
+
+// called only if above middleware call next
+app.use("/user/getUser", (req, res, next) => {
+    console.log('get user validated');
+    res.send('User data sent!');
+});
 
 
 app.get('/getUserProfile', (req,res) => {
