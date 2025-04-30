@@ -73,6 +73,16 @@ app.use('/',
     },
 );
 
+// at the end of all routes, if no route is matched, this will be executed
+//common for all request path ---- for handling errors, error object will be the first parameter
+app.use("/", (err, req, res, next) => {
+    if(err) {
+        console.log(err);
+        res.status(500).send('Internal server error');
+    }
+});
+
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
