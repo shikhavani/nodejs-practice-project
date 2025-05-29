@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
                     expires: new Date(Date.now() + 86400000), // 1 day
                     httpOnly: true, // only server can access the cookie
                 });
-                res.send('Login success');
+                res.json({message: 'Login success', data: user});
             } else {
                 return res.status(401).send('Invalid credentials');
             }

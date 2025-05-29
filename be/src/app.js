@@ -1,11 +1,17 @@
 const express = require('express');
 const connectDB = require('./config/database');
 const cookieParser = require('cookie-parser');
-
+const cors = require('cors');
 
 // const practiceApp = require('./practice');
 
 const app = express();
+
+// whitelisting these domain as the URLs are unsecure, so bypassing with cors which requires frontend is hosting in what domain port
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
 app.use(express.json()); // Middleware to parse JSON data from the request body, for all routes
 app.use(cookieParser()); // Middleware to parse cookies from the request headers, for all routes
