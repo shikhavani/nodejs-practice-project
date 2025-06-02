@@ -20,7 +20,8 @@ const userAuth = async (req, res, next) => {
      // read token from request cookies
     const {token} = req.cookies;
     if (!token) {
-        throw new Error("Token not found");
+        return res.status(401).json({message: "Please login"})
+        // throw new Error("Token not found");
     }
      // validate the token
     const decodedMsg = await jwt.verify(token, "DEV@SV21");

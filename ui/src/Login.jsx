@@ -14,7 +14,6 @@ const Login = () => {
     const navigate = useNavigate();
 
     const onClickLogin = async () => {
-
         try {
             const res = await axios.post(authContext + 'login', {
                 emailId, password
@@ -24,11 +23,10 @@ const Login = () => {
                 withCredentials: true
             })
             dispatch(addUser(res.data.data));
-            return navigate("/");
+            return navigate("/feed");
         } catch(err) {
             console.log(err);
         }
-       
     }
 
   return (

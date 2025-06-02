@@ -14,6 +14,15 @@
 - useSelector
 - Provider in App.jsx
 - dispatch, useNavigate()
+- login, feed, logout, handling userdara if token already present in cookie\
 
 
+
+
+
+
+
+
+- useState, useEffect, useReducer, useCallback, useNavigate, useSelector
+- Link tag
 

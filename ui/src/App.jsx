@@ -18,6 +18,7 @@ function App() {
               <Route index element={<div>Home Page</div>} />
               <Route path="login" element={<Login />} />
               <Route path="feed" element={<div>feed page</div>} />
+              <Route path="profile" element={<div>profile page</div>} />
             </Route>
             
           </Routes>
